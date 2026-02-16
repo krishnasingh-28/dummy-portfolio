@@ -1,34 +1,159 @@
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap');
+
+/* ========= BASE ========= */
+.app-container {
+  background-color: #060612;
+  color: #e0e0f0;
+  font-family: 'Figtree', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+/* ========= SECTION HEADING ========= */
+.section-heading {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  color: #ffffff;
+  position: relative;
+  display: inline-block;
+  width: 100%;
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+.section-heading::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #00b4d8, #7c3aed);
+  margin: 12px auto 0;
+  border-radius: 2px;
 }
 
-.App-link {
-    color: #61dafb;
+/* ========= GLASS CARD ========= */
+.glass-card {
+  background: rgba(12, 12, 40, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: border-color 0.5s, box-shadow 0.5s, transform 0.5s;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+.glass-card:hover {
+  box-shadow: 0 8px 40px rgba(0, 180, 216, 0.06);
+  transform: translateY(-2px);
+}
+
+/* ========= STARS ========= */
+.stars-container {
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #ffffff;
+  border-radius: 50%;
+  animation: star-twinkle ease-in-out infinite alternate;
+  opacity: 0;
+}
+
+@keyframes star-twinkle {
+  0% {
+    opacity: 0.1;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 0.8;
+    transform: scale(1.2);
+  }
+}
+
+/* ========= TYPING CURSOR ========= */
+.typing-cursor {
+  animation: cursor-blink 1s step-end infinite;
+  font-weight: 300;
+}
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ========= FADE IN UP ANIMATION ========= */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========= SCROLL REVEAL ========= */
+.reveal-element {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.reveal-element.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========= PULSE SLOW ========= */
+.animate-pulse-slow {
+  animation: pulse-slow 6s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-slow {
+  0% { opacity: 0.3; transform: scale(0.95); }
+  100% { opacity: 0.6; transform: scale(1.05); }
+}
+
+/* ========= FONT MONO ========= */
+.font-mono {
+  font-family: 'Fira Code', monospace;
+}
+
+/* ========= SCROLLBAR ========= */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #060612;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 180, 216, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 180, 216, 0.4);
+}
+
+/* ========= SELECTION ========= */
+::selection {
+  background: rgba(0, 180, 216, 0.3);
+  color: #ffffff;
+}
+
+/* ========= SMOOTH SCROLL ========= */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ========= RESPONSIVE ========= */
+@media (max-width: 768px) {
+  .section-heading {
+    font-size: 1.6rem;
+  }
 }
