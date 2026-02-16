@@ -1,20 +1,19 @@
-import React from 'react';
-import { Brain, Code, Database } from 'lucide-react';
+import React, { useState } from 'react';
 import { skillsData } from '../data/mock';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
-const categoryIcons = {
-  'Machine Learning & AI': <Brain size={24} className="text-cyan-400" />,
-  'Programming Languages': <Code size={24} className="text-purple-400" />,
-  'Data & Tools': <Database size={24} className="text-blue-400" />,
-};
+const categories = ["All", "Machine Learning & AI", "Programming", "Data & Tools"];
 
 const SkillsSection = () => {
   const sectionRef = useScrollReveal();
+  const [activeFilter, setActiveFilter] = useState("All");
+
+  const filtered = activeFilter === "All"
+    ? skillsData
+    : skillsData.filter((s) => s.category === activeFilter);
 
   return (
     <section id="skills" className="relative py-24 md:py-32" ref={sectionRef}>
-      {/* Subtle divider glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent" />
 
       <div className="max-w-6xl mx-auto px-6">
@@ -22,30 +21,47 @@ const SkillsSection = () => {
           <h2 className="section-heading">Technical Skills</h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mt-16">
-          {skillsData.map((category, i) => (
-            <div
-              key={i}
-              className="reveal-element glass-card rounded-xl p-8 group hover:border-cyan-500/30 transition-all duration-500"
-              style={{ transitionDelay: `${(i + 1) * 0.15}s` }}
+        {/* Filter Tabs */}
+        <div className="reveal-element flex flex-wrap justify-center gap-3 mt-12" style={{ transitionDelay: '0.15s' }}>
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveFilter(cat)}
+              className={`px-4 py-2 text-sm rounded-lg border transition-all duration-300 ${
+                activeFilter === cat
+                  ? 'bg-cyan-500/15 border-cyan-500/40 text-cyan-400'
+                  : 'bg-white/[0.03] border-white/[0.06] text-gray-500 hover:text-gray-300 hover:border-white/10'
+              }`}
             >
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  {categoryIcons[category.category]}
-                </div>
-                <h3 className="text-lg font-semibold text-white">{category.category}</h3>
-              </div>
+              {cat}
+            </button>
+          ))}
+        </div>
 
-              <div className="flex flex-wrap gap-2">
-                {category.skills.map((skill, j) => (
-                  <span
-                    key={j}
-                    className="px-3 py-1.5 text-sm rounded-lg bg-white/5 text-gray-300 border border-white/5 hover:border-cyan-500/30 hover:text-cyan-400 hover:bg-cyan-500/5 transition-all duration-300 cursor-default"
-                  >
-                    {skill}
-                  </span>
-                ))}
+        {/* Skills Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 mt-14">
+          {filtered.map((skill, i) => (
+            <div
+              key={skill.name}
+              className="reveal-element glass-card rounded-xl p-5 flex flex-col items-center text-center group hover:border-cyan-500/30 transition-all duration-500"
+              style={{ transitionDelay: `${(i + 1) * 0.06}s` }}
+            >
+              <div className="w-14 h-14 rounded-xl bg-white/[0.04] flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-white/[0.08] transition-all duration-300 overflow-hidden">
+                <img
+                  src={skill.logo}
+                  alt={skill.name}
+                  className="w-9 h-9 object-contain"
+                  loading="lazy"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.parentElement.innerHTML = `<span class="text-2xl font-bold text-cyan-400">${skill.name.charAt(0)}</span>`;
+                  }}
+                />
               </div>
+              <h3 className="text-sm font-semibold text-white group-hover:text-cyan-400 transition-colors duration-300">
+                {skill.name}
+              </h3>
+              <span className="text-[11px] text-gray-600 mt-1">{skill.category}</span>
             </div>
           ))}
         </div>
