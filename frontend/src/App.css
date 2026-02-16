@@ -2,7 +2,7 @@
 
 /* ========= BASE ========= */
 .app-container {
-  background-color: #060612;
+  background-color: #000000;
   color: #e0e0f0;
   font-family: 'Figtree', sans-serif;
   min-height: 100vh;
@@ -32,7 +32,7 @@
 
 /* ========= GLASS CARD ========= */
 .glass-card {
-  background: rgba(12, 12, 40, 0.5);
+  background: rgba(10, 10, 14, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);

@@ -27,7 +27,7 @@ const Header = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-[#060612]/80 backdrop-blur-xl border-b border-cyan-500/10 shadow-lg shadow-cyan-500/5'
+          ? 'bg-black/80 backdrop-blur-xl border-b border-cyan-500/10 shadow-lg shadow-cyan-500/5'
           : 'bg-transparent'
       }`}
     >
@@ -77,7 +77,7 @@ const Header = () => {
           mobileOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
-        <nav className="px-6 pb-6 bg-[#060612]/95 backdrop-blur-xl border-b border-cyan-500/10">
+        <nav className="px-6 pb-6 bg-black/95 backdrop-blur-xl border-b border-cyan-500/10">
           {navLinks.map((link) => (
             <a
               key={link.href}

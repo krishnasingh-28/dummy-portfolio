@@ -27,7 +27,7 @@ const ExperienceSection = () => {
                 style={{ transitionDelay: `${(i + 1) * 0.2}s` }}
               >
                 {/* Timeline dot */}
-                <div className="hidden md:flex absolute left-5 top-2 w-7 h-7 rounded-full bg-[#060612] border-2 border-cyan-500/40 items-center justify-center z-10">
+                <div className="hidden md:flex absolute left-5 top-2 w-7 h-7 rounded-full bg-black border-2 border-cyan-500/40 items-center justify-center z-10">
                   <div className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse" />
                 </div>
 
