@@ -22,18 +22,22 @@ export const aboutData = {
 };
 
 export const skillsData = [
-  {
-    category: "Machine Learning & AI",
-    skills: ["TensorFlow", "Scikit-learn", "Deep Learning"]
-  },
-  {
-    category: "Programming Languages",
-    skills: ["Python", "Java", "HTML/CSS"]
-  },
-  {
-    category: "Data & Tools",
-    skills: ["MySQL", "PostgreSQL", "NumPy", "Pandas", "Matplotlib", "Seaborn", "MS Excel", "Git", "FastAPI", "LangChain"]
-  }
+  { name: "TensorFlow", category: "Machine Learning & AI", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tensorflow/tensorflow-original.svg" },
+  { name: "Scikit-learn", category: "Machine Learning & AI", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/scikitlearn/scikitlearn-original.svg" },
+  { name: "Deep Learning", category: "Machine Learning & AI", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg" },
+  { name: "Python", category: "Programming", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" },
+  { name: "Java", category: "Programming", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" },
+  { name: "HTML/CSS", category: "Programming", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" },
+  { name: "MySQL", category: "Data & Tools", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" },
+  { name: "PostgreSQL", category: "Data & Tools", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" },
+  { name: "NumPy", category: "Data & Tools", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/numpy/numpy-original.svg" },
+  { name: "Pandas", category: "Data & Tools", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pandas/pandas-original.svg" },
+  { name: "Matplotlib", category: "Data & Tools", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/matplotlib/matplotlib-original.svg" },
+  { name: "Seaborn", category: "Data & Tools", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/plotly/plotly-original.svg" },
+  { name: "MS Excel", category: "Data & Tools", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-original.svg" },
+  { name: "Git", category: "Data & Tools", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" },
+  { name: "FastAPI", category: "Data & Tools", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg" },
+  { name: "LangChain", category: "Data & Tools", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/langchain/langchain-original.svg" },
 ];
 
 export const projectsData = [
