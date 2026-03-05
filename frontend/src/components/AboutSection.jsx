@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { User, Briefcase, Award } from 'lucide-react';
 import { aboutData } from '../data/mock';
 import { useScrollReveal } from '../hooks/useScrollReveal';
@@ -9,8 +9,54 @@ const iconMap = [
   <Award size={22} className="text-blue-400" />,
 ];
 
+const DURATION_MS = 1600;
+
 const AboutSection = () => {
   const sectionRef = useScrollReveal();
+  const statsRef = useRef(null);
+  const [displayValues, setDisplayValues] = useState(
+    aboutData.stats.map((s) => 0)
+  );
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  useEffect(() => {
+    const el = statsRef.current;
+    if (!el) return;
+
+    let intervalId = null;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (!entries[0].isIntersecting || hasAnimated) return;
+        setHasAnimated(true);
+
+        const targets = aboutData.stats.map((s) =>
+          typeof s.value === 'number' ? s.value : parseInt(s.value, 10) || 0
+        );
+        const start = performance.now();
+
+        const tick = () => {
+          const elapsed = performance.now() - start;
+          const progress = Math.min(1, elapsed / DURATION_MS);
+          setDisplayValues(
+            targets.map((target) =>
+              Math.min(target, Math.round(progress * target))
+            )
+          );
+          if (progress < 1) intervalId = requestAnimationFrame(tick);
+        };
+
+        intervalId = requestAnimationFrame(tick);
+      },
+      { threshold: 0.2, rootMargin: '0px 0px -80px 0px' }
+    );
+
+    observer.observe(el);
+    return () => {
+      observer.disconnect();
+      if (intervalId != null) cancelAnimationFrame(intervalId);
+    };
+  }, [hasAnimated]);
 
   return (
     <section id="about" className="relative py-24 md:py-32" ref={sectionRef}>
@@ -34,7 +80,7 @@ const AboutSection = () => {
           </div>
 
           {/* Stats Cards */}
-          <div className="md:col-span-2 flex flex-col gap-5">
+          <div ref={statsRef} className="md:col-span-2 flex flex-col gap-5">
             {aboutData.stats.map((stat, i) => (
               <div
                 key={i}
@@ -46,7 +92,7 @@ const AboutSection = () => {
                 </div>
                 <div>
                   <div className="text-3xl font-bold text-white group-hover:text-cyan-400 transition-colors duration-300">
-                    {stat.value}
+                    {displayValues[i]}{stat.suffix ?? ''}
                   </div>
                   <div className="text-sm text-gray-500">{stat.label}</div>
                 </div>

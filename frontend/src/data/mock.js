@@ -12,13 +12,14 @@ export const personalInfo = {
 
 export const aboutData = {
   paragraphs: [
-    "I'm a dedicated AI/ML Engineer currently working as an SWE Intern at Doodleblue Innovations. My journey in artificial intelligence and machine learning has equipped me with hands-on experience in developing production-ready AI solutions, from computer vision to recommendation systems.",
-    "I specialize in transforming complex business requirements into intelligent, data-driven solutions using deep learning, machine learning algorithms, and modern deployment techniques. My passion lies in building scalable AI systems that make a real impact."
+    "I'm an AI/ML Engineer at FundsApp Wealth Technologies, passionate about building intelligent systems that turn data into real-world impact.",
+    "My work focuses on designing and deploying production-grade AI solutions, ranging from computer vision models to AI-powered platforms, using modern machine learning and deep learning techniques. I specialize in translating complex business problems into scalable, data-driven AI solutions.",
+    "Currently, my focus is on building next-generation AI systems leveraging Generative AI, intelligent automation, and scalable ML architectures."
   ],
   stats: [
-    { label: "Projects Completed", value: "2" },
-    { label: "Internships", value: "0" },
-    { label: "Certifications", value: "1" }
+    { label: "Projects Completed", value: 6, suffix: "+" },
+    { label: "Internships", value: 1 },
+    { label: "Certifications", value: 3 }
   ]
 };
 
