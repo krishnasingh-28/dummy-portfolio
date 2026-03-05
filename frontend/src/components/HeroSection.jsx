@@ -80,8 +80,11 @@ const HeroSection = () => {
         </div>
 
         <div className="fade-in-up" style={{ animationDelay: '0.8s' }}>
-          <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
+          <p className="text-gray-300 text-xl md:text-2xl max-w-3xl mx-auto mb-3 font-medium leading-snug">
             {personalInfo.heroDescription}
+          </p>
+          <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
+            {personalInfo.heroSubDescription}
           </p>
         </div>
 

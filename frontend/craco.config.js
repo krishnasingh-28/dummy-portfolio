@@ -34,13 +34,7 @@ if (config.enableHealthCheck) {
 
 const webpackConfig = {
   eslint: {
-    configure: {
-      extends: ["plugin:react-hooks/recommended"],
-      rules: {
-        "react-hooks/rules-of-hooks": "error",
-        "react-hooks/exhaustive-deps": "warn",
-      },
-    },
+    enable: false, // ESLint 9 is incompatible with react-scripts' eslint-webpack-plugin; run `npx eslint src` separately if needed
   },
   webpack: {
     alias: {
