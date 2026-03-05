@@ -13,50 +13,70 @@ const DURATION_MS = 1600;
 
 const AboutSection = () => {
   const sectionRef = useScrollReveal();
-  const statsRef = useRef(null);
+  const hasAnimatedRef = useRef(false);
+  const rafIdRef = useRef(null);
   const [displayValues, setDisplayValues] = useState(
     aboutData.stats.map((s) => 0)
   );
-  const [hasAnimated, setHasAnimated] = useState(false);
+
+  const runCountUp = React.useCallback(() => {
+    if (rafIdRef.current != null) cancelAnimationFrame(rafIdRef.current);
+
+    const targets = aboutData.stats.map((s) =>
+      typeof s.value === 'number' ? s.value : parseInt(s.value, 10) || 0
+    );
+    setDisplayValues(targets.map(() => 0));
+
+    const start = performance.now();
+    const tick = () => {
+      const elapsed = performance.now() - start;
+      const progress = Math.min(1, elapsed / DURATION_MS);
+      setDisplayValues(
+        targets.map((target) =>
+          Math.min(target, Math.round(progress * target))
+        )
+      );
+      if (progress < 1) rafIdRef.current = requestAnimationFrame(tick);
+      else rafIdRef.current = null;
+    };
+    rafIdRef.current = requestAnimationFrame(tick);
+  }, []);
 
   useEffect(() => {
-    const el = statsRef.current;
+    const el = sectionRef.current;
     if (!el) return;
-
-    let intervalId = null;
 
     const observer = new IntersectionObserver(
       (entries) => {
-        if (!entries[0].isIntersecting || hasAnimated) return;
-        setHasAnimated(true);
-
-        const targets = aboutData.stats.map((s) =>
-          typeof s.value === 'number' ? s.value : parseInt(s.value, 10) || 0
-        );
-        const start = performance.now();
-
-        const tick = () => {
-          const elapsed = performance.now() - start;
-          const progress = Math.min(1, elapsed / DURATION_MS);
-          setDisplayValues(
-            targets.map((target) =>
-              Math.min(target, Math.round(progress * target))
-            )
-          );
-          if (progress < 1) intervalId = requestAnimationFrame(tick);
-        };
-
-        intervalId = requestAnimationFrame(tick);
+        const intersecting = entries[0].isIntersecting;
+        if (!intersecting) {
+          hasAnimatedRef.current = false;
+          return;
+        }
+        if (hasAnimatedRef.current) return;
+        hasAnimatedRef.current = true;
+        runCountUp();
       },
-      { threshold: 0.2, rootMargin: '0px 0px -80px 0px' }
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
     );
 
+    const onHashChange = () => {
+      if (window.location.hash === '#about') {
+        hasAnimatedRef.current = true;
+        runCountUp();
+      }
+    };
+
     observer.observe(el);
+    window.addEventListener('hashchange', onHashChange);
+    if (window.location.hash === '#about') onHashChange();
+
     return () => {
       observer.disconnect();
-      if (intervalId != null) cancelAnimationFrame(intervalId);
+      window.removeEventListener('hashchange', onHashChange);
+      if (rafIdRef.current != null) cancelAnimationFrame(rafIdRef.current);
     };
-  }, [hasAnimated]);
+  }, [runCountUp]);
 
   return (
     <section id="about" className="relative py-24 md:py-32" ref={sectionRef}>
@@ -80,7 +100,7 @@ const AboutSection = () => {
           </div>
 
           {/* Stats Cards */}
-          <div ref={statsRef} className="md:col-span-2 flex flex-col gap-5">
+          <div className="md:col-span-2 flex flex-col gap-5">
             {aboutData.stats.map((stat, i) => (
               <div
                 key={i}
