@@ -27,6 +27,10 @@ export const skillsData = [
   { name: "TensorFlow", category: "Machine Learning & AI", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tensorflow/tensorflow-original.svg" },
   { name: "Scikit-learn", category: "Machine Learning & AI", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/scikitlearn/scikitlearn-original.svg" },
   { name: "Deep Learning", category: "Machine Learning & AI", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg" },
+  { name: "LangChain", category: "Machine Learning & AI", logo: "https://upload.wikimedia.org/wikipedia/commons/6/60/LangChain_Logo.svg", logoLight: true },
+  { name: "LangGraph", category: "Machine Learning & AI", logo: "https://raw.githubusercontent.com/lobehub/lobe-icons/refs/heads/master/packages/static-png/light/langgraph-color.png" },
+  { name: "LangSmith", category: "Machine Learning & AI", logo: "https://smith.langchain.com/favicon.ico" },
+  { name: "Langfuse", category: "Machine Learning & AI", logo: "https://langfuse.com/icon.svg" },
   { name: "Python", category: "Programming", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" },
   { name: "Java", category: "Programming", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" },
   { name: "HTML/CSS", category: "Programming", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" },
@@ -39,7 +43,6 @@ export const skillsData = [
   { name: "MS Excel", category: "Data & Tools", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-original.svg" },
   { name: "Git", category: "Data & Tools", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" },
   { name: "FastAPI", category: "Data & Tools", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg" },
-  { name: "LangChain", category: "Data & Tools", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/langchain/langchain-original.svg" },
 ];
 
 export const projectsData = [

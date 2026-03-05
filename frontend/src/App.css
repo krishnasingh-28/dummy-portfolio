@@ -107,6 +107,25 @@
   transform: translateY(0);
 }
 
+/* ========= SKILLS SECTION HOVER SPIN ========= */
+.skill-card:hover {
+  transform: translateY(-4px);
+}
+
+.skill-card:hover .skill-card-icon-wrap {
+  animation: skill-icon-spin 0.55s ease-in-out;
+}
+
+@keyframes skill-icon-spin {
+  0% { transform: scale(1.1) rotate(0deg); }
+  100% { transform: scale(1.1) rotate(360deg); }
+}
+
+/* Logos that are dark-on-transparent: make visible on dark background */
+.skill-logo-light {
+  filter: brightness(0) invert(1);
+}
+
 /* ========= PULSE SLOW ========= */
 .animate-pulse-slow {
   animation: pulse-slow 6s ease-in-out infinite alternate;
