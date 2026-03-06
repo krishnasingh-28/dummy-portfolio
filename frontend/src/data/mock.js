@@ -90,14 +90,14 @@ export const projectsData = [
 
 export const experienceData = [
   {
-    period: "July 2025 - Present",
-    title: "SWE Intern (AI/ML)",
-    company: "Doodleblue Innovations",
+    period: "July 2025 - January 2026",
+    title: "AI Engineer",
+    company: "doodleblue Innovations",
     points: [
-      "Engineered a RAG pipeline utilizing Gemini File Storage tool for Gemini RAG Engine to deliver accurate, ground-truth-based answers by querying custom document knowledge bases.",
-      "Developed a high-speed, stateful Conversational AI Chatbot backend using FastAPI and the Groq API (LLaMA 3.1), featuring real-time response streaming and history management.",
-      "Implemented a Foundational RAG Model system in Python, demonstrating core capabilities including document embedding, vector retrieval, and context-based LLM generation.",
-      "Created a real-time, web-based Face Recognition System using Streamlit and InsightFace, enabling high-accuracy face verification via webcam capture and image processing."
+      "Implemented an Intent Classification module for an AI-powered CRM, achieving 85% confidence score for intent detection. Integrated next-best prompt recommendations to improve response accuracy and user flow.",
+      "Architected and deployed an end-to-end AI backend pipeline within the CRM, enabling real-time streamed responses with database integration. Improved context-aware retrieval and data accessibility for the client.",
+      "Designed an automated AI calling & reminder workflow using Vonage CPaaS, orchestrating SMS, WhatsApp notifications, and voice reminder calls for loan due follow-ups. Reduced late payments by 10% through timely multi-channel outreach.",
+      "Built a Gemini powered RAG system using Google's managed file search for document-based question answering. Eliminated the need for vector DB setup, manual chunking, and embedding pipelines, reducing engineering overhead."
     ]
   },
   {
