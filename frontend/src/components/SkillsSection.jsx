@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { skillsData } from '../data/mock';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
-const categories = ["All", "Machine Learning & AI", "Programming", "Data & Tools"];
+const categories = ["All", "Machine Learning & AI", "Programming", "Data", "Tools"];
 
 const SkillsSection = () => {
   const sectionRef = useScrollReveal();

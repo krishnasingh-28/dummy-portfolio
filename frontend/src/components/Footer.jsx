@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Linkedin, Mail, Heart } from 'lucide-react';
+import { Mail, Heart } from 'lucide-react';
 import { personalInfo } from '../data/mock';
 
 const Footer = () => {
@@ -22,26 +22,47 @@ const Footer = () => {
               href={personalInfo.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-lg bg-white/5 border border-white/5 flex items-center justify-center text-gray-500 hover:text-cyan-400 hover:border-cyan-500/30 hover:bg-cyan-500/5 transition-all duration-300"
+              className="group w-10 h-10 rounded-lg bg-white/5 border border-white/5 flex items-center justify-center hover:border-cyan-500/30 hover:bg-cyan-500/5 transition-all duration-300"
               aria-label="GitHub"
             >
-              <Github size={18} />
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
+                alt="GitHub"
+                className="w-[18px] h-[18px] object-contain invert opacity-90 group-hover:opacity-100 transition-opacity"
+              />
             </a>
             <a
               href={personalInfo.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-lg bg-white/5 border border-white/5 flex items-center justify-center text-gray-500 hover:text-cyan-400 hover:border-cyan-500/30 hover:bg-cyan-500/5 transition-all duration-300"
+              className="w-10 h-10 rounded-lg bg-white/5 border border-white/5 flex items-center justify-center hover:border-cyan-500/30 hover:bg-cyan-500/5 transition-all duration-300"
               aria-label="LinkedIn"
             >
-              <Linkedin size={18} />
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-original.svg"
+                alt="LinkedIn"
+                className="w-[18px] h-[18px] object-contain opacity-90 hover:opacity-100 transition-opacity"
+              />
+            </a>
+            <a
+              href={personalInfo.leetcode}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-lg bg-white/5 border border-white/5 flex items-center justify-center hover:border-cyan-500/30 hover:bg-cyan-500/5 transition-all duration-300"
+              aria-label="LeetCode"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/leetcode/leetcode-original.svg"
+                alt="LeetCode"
+                className="w-[18px] h-[18px] object-contain opacity-90 hover:opacity-100 transition-opacity"
+              />
             </a>
             <a
               href={`mailto:${personalInfo.email}`}
-              className="w-10 h-10 rounded-lg bg-white/5 border border-white/5 flex items-center justify-center text-gray-500 hover:text-cyan-400 hover:border-cyan-500/30 hover:bg-cyan-500/5 transition-all duration-300"
+              className="w-10 h-10 rounded-lg bg-white/5 border border-white/5 flex items-center justify-center text-cyan-400 hover:border-cyan-500/30 hover:bg-cyan-500/5 transition-all duration-300"
               aria-label="Email"
             >
-              <Mail size={18} />
+              <Mail size={18} className="text-cyan-400" />
             </a>
           </div>
 
